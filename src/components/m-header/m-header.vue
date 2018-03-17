@@ -1,8 +1,7 @@
 <template>
   <div class="m-header">
-      <div class="icon">
-          <h1 class="text">OP Music</h1>
-      </div>
+      <div class="icon"></div>
+      <h1 class="text">OP Music</h1>
   </div>
 </template>
 
@@ -24,15 +23,15 @@ export default {}
             display : inline-block
             vertical-align : top
             margin-top : 6px
-            width : 60px
-            height : 64px
+            width : 30px
+            height : 32px
             margin-right : 9px
             bg-image('logo')
-            background-size : 60px 64px
-            .text
-                display : inline-block
-                vertical-align : top
-                line-height : 44px
-                font-size : $font-size-large
+            background-size : 30px 32px
+        .text
+            display : inline-block
+            vertical-align : top
+            line-height : 44px
+            font-size : $font-size-large
 
 </style>
