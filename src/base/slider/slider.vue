@@ -7,8 +7,8 @@
   </div>
 </template>
 <script>
-import { addClass } from "common/js/dom";
-import BScroll from "better-scroll";
+import { addClass } from 'common/js/dom'
+import BScroll from 'better-scroll'
 
 export default {
   props: {
@@ -27,9 +27,9 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this._setSliderWidth
-      this._initSlider
-    }, 20);
+      this._setSliderWidth()
+      this._initSlider()
+    }, 20)
   },
   methods: {
     _setSliderWidth() {
@@ -58,10 +58,10 @@ export default {
         snapLoop: this.loop,
         snapThreshold: 0.3,
         snapSpeed: 400
-      });
+      })
     }
   }
-};
+}
 </script>
 <style scoped lang="stylus" rel="stylesheet/stylus">
 @import '~common/stylus/variable';
