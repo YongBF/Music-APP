@@ -9,11 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
-const express = require('express')
-const app = express()
 const axios = require('axios')
-var apiRoutes=express.Router()
-app.use('/api',apiRoutes)
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -27,15 +23,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
   // these devServer options should be customized in /config/index.js
   devServer: {
-    clientLogLevel: 'warning',
-    historyApiFallback: {
-      rewrites: [
-        { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') },
-      ],
-    },
     before(app){
       app.get('/api/getDiscList', function (req, res) {
-        var url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'
+        var url = encodeURI('https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg')
         axios.get(url, {
           headers: {
             referer: 'https://c.y.qq.com/',
@@ -49,6 +39,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         })
       })
     },
+    clientLogLevel: 'warning',
+    historyApiFallback: {
+      rewrites: [
+        { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') },
+      ],
+    },
+    
     hot: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
