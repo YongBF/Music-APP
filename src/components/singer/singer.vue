@@ -1,6 +1,6 @@
 <template>
   <div>
-    歌手页面
+    <listview :data="singers"></listview>
   </div>
 </template>
 
@@ -8,6 +8,7 @@
 import {getSingerList} from 'api/singer'
 import {ERR_OK} from 'api/config'
 import Singer from 'common/js/singer'
+import Listview from 'base/listview/listview'
 
 const HOT_SINGER_LEN = 10
 const HOT_NAME = '热门'
@@ -20,6 +21,9 @@ export default{
   },
   created() {
     this._getSingerList()
+  },
+  components: {
+    Listview
   },
   methods: {
     _getSingerList() {
